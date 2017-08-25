@@ -1,6 +1,8 @@
 #Given a string s, find and return the first instance of a
 #non-repeating character in it. If there is no such character, return '_'.
 
+import unittest
+
 def firstNotRepeatingCharacter(s):
     index = [] #create a list to house indecies of possible answers
     a = list(s)
@@ -19,3 +21,35 @@ def firstNotRepeatingCharacter(s):
       return s[min(index)] #return the one w/ the smalled index
     else:
       return "_" #if not, return _
+
+class TestFirstNotRepeatingCharacter(unittest.TestCase):
+
+    test1 = "abacabad"
+
+    ans1 = "c"
+
+    test2 = "abacabaabacaba"
+
+    ans2 = "_"
+
+    test3 = "z"
+
+    ans3 = "z"
+
+    def SetUp(self):
+        pass
+
+    def test_first_not_repeating_character_normal(self):
+        self.assertEqual(firstNotRepeatingCharacter(TestFirstNotRepeatingCharacter.test1),
+        TestFirstNotRepeatingCharacter.ans1)
+
+    def test_first_not_repeating_character_none(self):
+        self.assertEqual(firstNotRepeatingCharacter(TestFirstNotRepeatingCharacter.test2),
+        TestFirstNotRepeatingCharacter.ans2)
+
+    def test_first_not_repeating_character_one(self):
+        self.assertEqual(firstNotRepeatingCharacter(TestFirstNotRepeatingCharacter.test3),
+        TestFirstNotRepeatingCharacter.ans3)
+
+if __name__ == '__main__':
+    unittest.main(verbosity=2)
